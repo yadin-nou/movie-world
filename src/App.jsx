@@ -1,14 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import { Form } from "./components/Form";
 import { Display } from "./components/Display";
 
 function App() {
   const [focus, setFocus] = useState(false);
+  const [movie, setMovie] = useState([]);
 
   const handleCenterForm = () => {
     setFocus(true);
   };
+  const fetchMovie = async (title) => {
+    try {
+      const url = `https://www.omdbapi.com/?t=${title}&apikey=2f439848`;
+      const response = await fetch(url);
+      const data = await response.json();
+      setMovie(data);
+    } catch (error) {
+      console.log(Error);
+    }
+  };
+  useEffect(() => {
+    fetchMovie("prem");
+  }, []);
   return (
     <div className="wrapper d-flex flex-directin-coloum justify-content-center">
       <div className="container-md bg-danger pt-5">
