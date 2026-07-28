@@ -22,11 +22,11 @@ export const Display = () => {
                   <span className="ps-3">
                     <button className="btn btn-info">Action</button>
                   </span>
-                  <div className="pt-2">
-                    <button className="btn btn-danger w-50">Delete</button>
-                  </div>
                 </small>
               </p>
+              <span className="pt-2">
+                <button className="btn btn-danger w-50">Delete</button>
+              </span>
             </div>
           </div>
         </div>
