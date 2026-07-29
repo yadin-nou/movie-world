@@ -21,7 +21,23 @@ function App() {
     }
   };
   useEffect(() => {
-    fetchMovie("prem");
+    const index = Math.floor(Math.random() * 12);
+    const seedTitles = [
+      "The Matrix",
+      "Inception",
+      "The Dark Knight",
+      "Parasite",
+      "Interstellar",
+      "Pulp Fiction",
+      "The Godfather",
+      "Fight Club",
+      "Spirited Away",
+      "The Shawshank Redemption",
+      "Titanic",
+      "Gladiator",
+    ];
+    console.log(index);
+    fetchMovie(seedTitles[index]);
   }, []);
   return (
     <div className="wrapper d-flex flex-directin-coloum justify-content-center">
