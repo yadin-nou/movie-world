@@ -15,7 +15,7 @@ export const Form = ({ handleCenterForm, focus }) => {
               name="movieName"
               className="form-control "
               placeholder="Search Movie Name"
-              style={{ width: "400px" }}
+              style={{ width: "calc(100vh - 550px)" }}
               onFocus={handleCenterForm}
             />
             <button className="btn btn-danger">Search</button>

@@ -1,19 +1,26 @@
 import React from "react";
 import mtest from "../assets/images/mtest.jpg";
 
-export const Display = () => {
+export const Display = ({ movie }) => {
+  console.log(movie);
   return (
     <>
-      <div className="card mb-3 mt-3" style={{ maxWidth: "540px" }}>
+      <div className="card mb-3 mt-3" style={{ maxWidth: "640px" }}>
         <div className="row g-0">
-          <div className="col-4">
-            <img src={mtest} className="img-fluid rounded-start" alt="..." />
+          <div className="col-12 col-sm-6">
+            <img
+              src={movie.Poster}
+              className="img-fluid rounded-start"
+              alt="..."
+            />
           </div>
-          <div className="col-8">
+          <div className="col-12 col-sm-6">
             <div className="card-body">
-              <h5 className="card-title">Card title</h5>
+              <h5 className="card-title">{movie.Title}</h5>
               <p className="card-text">
-                This is a wider card with supporting text below as a natural
+                IMBD Rating: {movie.imdbRating}
+                <br />
+                {movie.Plot}
               </p>
               <p className="card-text">
                 <small className="text-body-secondary">

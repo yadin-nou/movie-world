@@ -26,13 +26,15 @@ function App() {
   return (
     <div className="wrapper d-flex flex-directin-coloum justify-content-center">
       <div className="container-md bg-danger pt-5">
-        <header className="ps-5">Movie World</header>
+        <header>
+          <h2>Movie World</h2>
+        </header>
         <section
           className="container-sm mt-3 bg-warning search"
           style={{ minHeight: "80vh" }}
         >
           <Form handleCenterForm={handleCenterForm} focus={focus} />
-          {!focus && <Display />}
+          {!focus && <Display movie={movie} />}
         </section>
         <section>Hello</section>
       </div>
