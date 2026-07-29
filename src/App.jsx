@@ -93,7 +93,7 @@ function App() {
           className="movie-list container-sm mt-3 pt-3 "
           style={{ minHeight: "80vh" }}
         >
-          <MovieList movie={movieList} />
+          <MovieList movieList={movieList} />
         </section>
       </div>
     </div>
