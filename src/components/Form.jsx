@@ -1,4 +1,11 @@
-export const Form = ({ handleCenterForm, focus }) => {
+import { useRef } from "react";
+
+export const Form = ({ handleCenterForm, focus, seachMovie }) => {
+  const refSearch = useRef("");
+  const handleSearch = (e) => {
+    e.preventDefault();
+    seachMovie(refSearch.current.value);
+  };
   return (
     <>
       {focus && (
@@ -7,7 +14,7 @@ export const Form = ({ handleCenterForm, focus }) => {
           <p>Findout about the movies more details before watching them...</p>
         </div>
       )}
-      <form className="row pt-4 ">
+      <form className="row pt-4 " onSubmit={(e) => handleSearch(e)}>
         <div className="col-auto">
           <div className="input-group">
             <input
@@ -17,6 +24,7 @@ export const Form = ({ handleCenterForm, focus }) => {
               placeholder="Search Movie Name"
               style={{ width: "calc(100vh - 550px)" }}
               onFocus={handleCenterForm}
+              ref={refSearch}
             />
             <button className="btn btn-danger">Search</button>
           </div>

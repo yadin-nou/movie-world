@@ -1,7 +1,7 @@
 import React from "react";
 import mtest from "../assets/images/mtest.jpg";
 
-export const Display = ({ movie }) => {
+export const Display = ({ movie, serachDelete }) => {
   console.log(movie);
   return (
     <>
@@ -32,7 +32,9 @@ export const Display = ({ movie }) => {
                 </small>
               </p>
               <span className="pt-2">
-                <button className="btn btn-danger w-50">Delete</button>
+                <button className="btn btn-danger w-50" onClick={serachDelete}>
+                  Delete
+                </button>
               </span>
             </div>
           </div>
