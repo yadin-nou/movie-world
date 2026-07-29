@@ -1,8 +1,8 @@
 import React from "react";
 import mtest from "../assets/images/mtest.jpg";
 
-export const Display = ({ movie, serachDelete }) => {
-  console.log(movie);
+export const Display = ({ movie, serachDelete, setMovieAction }) => {
+  //console.log(movie);
   return (
     <>
       <div className="card mb-3 mt-3" style={{ maxWidth: "640px" }}>
@@ -25,9 +25,19 @@ export const Display = ({ movie, serachDelete }) => {
               <p className="card-text">
                 <small className="text-body-secondary">
                   <span></span>
-                  <button className="btn btn-warning">Drama</button>
+                  <button
+                    className="btn btn-warning"
+                    onClick={() => setMovieAction("drama")}
+                  >
+                    Drama
+                  </button>
                   <span className="ps-3">
-                    <button className="btn btn-info">Action</button>
+                    <button
+                      className="btn btn-info"
+                      onClick={() => setMovieAction("actions")}
+                    >
+                      Action
+                    </button>
                   </span>
                 </small>
               </p>

@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import { Form } from "./components/Form";
 import { Display } from "./components/Display";
+import { MovieList } from "./components/MovieList";
+import { useFormState } from "react-dom";
 
 function App() {
   const [focus, setFocus] = useState(false);
   const [movie, setMovie] = useState([]);
-
+  const [movieList, setMovieList] = useState([]);
   const handleCenterForm = () => {
     setFocus(true);
   };
@@ -30,6 +32,16 @@ function App() {
     setMovie(data);
     setFocus(false);
     //console.log(movie);
+  };
+
+  const setMovieAction = (type) => {
+    //     ...movieList — spreads all existing movies in the array (keeps them, doesn't mutate the original array ).
+    // { ...movie, actions: type } — creates a new object that copies all of movie's existing properties (Title, Poster, imdbRating, etc.),
+    //  then adds/overwrites an actions property set to type.
+    // The whole thing wraps in [...] to build a new array, which gets set as the new movieList state.
+    setMovieList([...movieList, { ...movie, action: type }]);
+    //setMovieList([...movieList, movie]);
+    console.log(movieList);
   };
   useEffect(() => {
     const initailMovie = async () => {
@@ -55,7 +67,7 @@ function App() {
   }, []);
   return (
     <div className="wrapper d-flex flex-directin-coloum justify-content-center">
-      <div className="container-md bg-danger pt-5">
+      <div className="container-md bg-danger pt-5 p-3">
         <header>
           <h2>Movie World</h2>
         </header>
@@ -68,9 +80,20 @@ function App() {
             focus={focus}
             seachMovie={seachMovie}
           />
-          {!focus && <Display movie={movie} serachDelete={serachDelete} />}
+          {!focus && (
+            <Display
+              movie={movie}
+              serachDelete={serachDelete}
+              setMovieAction={setMovieAction}
+            />
+          )}
         </section>
-        <section>Hello</section>
+        <section
+          className="movie-list container-sm mt-3 bg-warning"
+          style={{ minHeight: "80vh" }}
+        >
+          <MovieList movie={movieList} />
+        </section>
       </div>
     </div>
   );
