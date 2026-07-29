@@ -41,7 +41,8 @@ function App() {
     // The whole thing wraps in [...] to build a new array, which gets set as the new movieList state.
     setMovieList([...movieList, { ...movie, action: type }]);
     //setMovieList([...movieList, movie]);
-    console.log(movieList);
+    setFocus(true);
+    //console.log(movieList);
   };
   useEffect(() => {
     const initailMovie = async () => {
@@ -67,7 +68,7 @@ function App() {
   }, []);
   return (
     <div className="wrapper d-flex flex-directin-coloum justify-content-center">
-      <div className="container-md bg-danger pt-5 p-3">
+      <div className="container-md  pt-5 p-3">
         <header>
           <h2>Movie World</h2>
         </header>
@@ -89,7 +90,7 @@ function App() {
           )}
         </section>
         <section
-          className="movie-list container-sm mt-3 bg-warning"
+          className="movie-list container-sm mt-3 pt-3 "
           style={{ minHeight: "80vh" }}
         >
           <MovieList movie={movieList} />
