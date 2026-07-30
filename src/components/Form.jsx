@@ -25,6 +25,7 @@ export const Form = ({ handleCenterForm, focus, searchMovie }) => {
               style={{ width: "calc(100vh - 550px)" }}
               onFocus={handleCenterForm}
               ref={refSearch}
+              required
             />
             <button className="btn btn-danger">Search</button>
           </div>

@@ -76,7 +76,7 @@ export const MovieList = ({ movieList, deleteMovie }) => {
                   <p className="card-text" style={{ fontSize: "12px" }}>
                     IMBD Rating: {movie.imdbRating}
                     <br />
-                    {movie.Plot}
+                    {movie.Plot.slice(0, 50)} ....
                   </p>
 
                   <span className="pt-2">
