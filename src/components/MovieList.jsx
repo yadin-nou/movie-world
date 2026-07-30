@@ -60,7 +60,10 @@ export const MovieList = ({ movieList, deleteMovie }) => {
           <div
             key={index}
             className="card mb-3 mt-4"
-            style={{ maxWidth: "350px" }}
+            style={{
+              maxWidth: "350px",
+              backgroundColor: " rgba(255, 255, 255, 0.4)",
+            }}
           >
             <div className="row g-0">
               <div className="col-4">

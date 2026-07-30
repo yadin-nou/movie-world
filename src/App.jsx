@@ -18,6 +18,10 @@ function App() {
       const response = await fetch(url);
       const data = await response.json();
       //setMovie(data);
+      if (data.Response === "false") {
+        //console.log(data.Error);
+        return null;
+      }
       return data;
     } catch (error) {
       console.log(error);
