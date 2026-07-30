@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 export const MovieList = ({ movieList }) => {
   // console.log(movieList);
+  const [type, setType] = useState([]);
+
+  const handleAction = (action) => {
+    action !== "all"
+      ? setType(movieList.filter((item) => item.action === action))
+      : setType(movieList);
+  };
+  useEffect(() => {
+    setType(movieList);
+  }, []);
   return (
     <>
       <div className="btn-group">
@@ -11,24 +21,37 @@ export const MovieList = ({ movieList }) => {
           name="filter"
           id="all"
           defaultChecked
+          onClick={() => handleAction("all")}
         />
         <label className="btn btn-outline-primary" htmlFor="all">
           ALL
         </label>
 
-        <input type="radio" className="btn-check" name="filter" id="drama" />
+        <input
+          type="radio"
+          className="btn-check"
+          name="filter"
+          id="drama"
+          onClick={() => handleAction("drama")}
+        />
         <label className="btn btn-outline-warning" htmlFor="drama">
           Drama
         </label>
 
-        <input type="radio" className="btn-check" name="filter" id="action" />
+        <input
+          type="radio"
+          className="btn-check"
+          name="filter"
+          id="action"
+          onClick={() => handleAction("actions")}
+        />
         <label className="btn btn-outline-info" htmlFor="action">
           Action
         </label>
       </div>
-      <div className="pt-4">Movies: 2</div>
+      <div className="pt-4">Movies: {movieList.length}</div>
       <div className="d-flex justify-content-center align-item-center flex-wrap gap-2">
-        {movieList.map((movie, index) => (
+        {type.map((movie, index) => (
           <div
             key={index}
             className="card mb-3 mt-4"

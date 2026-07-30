@@ -73,8 +73,14 @@ function App() {
           <h2>Movie World</h2>
         </header>
         <section
-          className="container-sm mt-3 bg-warning search"
-          style={{ minHeight: "80vh" }}
+          className="container-sm mt-3 search"
+          style={{
+            minHeight: "80vh",
+            backgroundImage: `url(${movie.Poster})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
         >
           <Form
             handleCenterForm={handleCenterForm}
