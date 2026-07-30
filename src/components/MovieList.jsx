@@ -11,7 +11,8 @@ export const MovieList = ({ movieList }) => {
   };
   useEffect(() => {
     setType(movieList);
-  }, []);
+    //console.log(movieList);
+  }, [movieList.length]);
   return (
     <>
       <div className="btn-group">
