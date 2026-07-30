@@ -3,7 +3,6 @@ import "./App.css";
 import { Form } from "./components/Form";
 import { Display } from "./components/Display";
 import { MovieList } from "./components/MovieList";
-import { useFormState } from "react-dom";
 
 function App() {
   const [focus, setFocus] = useState(false);
@@ -24,14 +23,19 @@ function App() {
       console.log(error);
     }
   };
-  const serachDelete = () => {
+  const searchDelete = () => {
     setFocus(true);
   };
-  const seachMovie = async (title) => {
+  const searchMovie = async (title) => {
     const data = await fetchMovie(title);
     setMovie(data);
     setFocus(false);
     //console.log(movie);
+  };
+
+  const deleteMovie = (imdbID) => {
+    setMovieList(movieList.filter((item) => item.imdbID !== imdbID));
+    //console.log(action);
   };
 
   const setMovieAction = (type) => {
@@ -85,12 +89,12 @@ function App() {
           <Form
             handleCenterForm={handleCenterForm}
             focus={focus}
-            seachMovie={seachMovie}
+            searchMovie={searchMovie}
           />
           {!focus && (
             <Display
               movie={movie}
-              serachDelete={serachDelete}
+              searchDelete={searchDelete}
               setMovieAction={setMovieAction}
             />
           )}
@@ -99,7 +103,7 @@ function App() {
           className="movie-list container-sm mt-3 pt-3 "
           style={{ minHeight: "80vh" }}
         >
-          <MovieList movieList={movieList} />
+          <MovieList movieList={movieList} deleteMovie={deleteMovie} />
         </section>
       </div>
     </div>

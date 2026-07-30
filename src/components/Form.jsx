@@ -1,10 +1,10 @@
 import { useRef } from "react";
 
-export const Form = ({ handleCenterForm, focus, seachMovie }) => {
+export const Form = ({ handleCenterForm, focus, searchMovie }) => {
   const refSearch = useRef("");
   const handleSearch = (e) => {
     e.preventDefault();
-    seachMovie(refSearch.current.value);
+    searchMovie(refSearch.current.value);
   };
   return (
     <>

@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from "react";
 
-export const MovieList = ({ movieList }) => {
-  // console.log(movieList);
+export const MovieList = ({ movieList, deleteMovie }) => {
   const [type, setType] = useState([]);
+  const [activeFilter, setActiveFilter] = useState("all");
 
   const handleAction = (action) => {
-    action !== "all"
-      ? setType(movieList.filter((item) => item.action === action))
-      : setType(movieList);
+    setActiveFilter(action);
   };
   useEffect(() => {
-    setType(movieList);
-    //console.log(movieList);
-  }, [movieList.length]);
+    if (activeFilter === "all") {
+      setType(movieList);
+    } else {
+      setType(movieList.filter((item) => item.action === activeFilter));
+    }
+    //console.log(type);
+  }, [movieList, activeFilter]);
+
   return (
     <>
       <div className="btn-group">
@@ -21,8 +24,7 @@ export const MovieList = ({ movieList }) => {
           className="btn-check"
           name="filter"
           id="all"
-          defaultChecked
-          onClick={() => handleAction("all")}
+          onChange={() => handleAction("all")}
         />
         <label className="btn btn-outline-primary" htmlFor="all">
           ALL
@@ -33,7 +35,8 @@ export const MovieList = ({ movieList }) => {
           className="btn-check"
           name="filter"
           id="drama"
-          onClick={() => handleAction("drama")}
+          checked={activeFilter === "drama"}
+          onChange={() => handleAction("drama")}
         />
         <label className="btn btn-outline-warning" htmlFor="drama">
           Drama
@@ -44,7 +47,8 @@ export const MovieList = ({ movieList }) => {
           className="btn-check"
           name="filter"
           id="action"
-          onClick={() => handleAction("actions")}
+          checked={activeFilter === "actions"}
+          onChange={() => handleAction("actions")}
         />
         <label className="btn btn-outline-info" htmlFor="action">
           Action
@@ -76,7 +80,12 @@ export const MovieList = ({ movieList }) => {
                   </p>
 
                   <span className="pt-2">
-                    <button className="btn btn-danger w-50">Delete</button>
+                    <button
+                      className="btn btn-danger w-50"
+                      onClick={() => deleteMovie(movie.imdbID)}
+                    >
+                      Delete
+                    </button>
                   </span>
                 </div>
               </div>
