@@ -75,42 +75,52 @@ function App() {
     initailMovie();
   }, []);
   return (
-    <div className="wrapper d-flex flex-directin-coloum justify-content-center">
-      <div className="container-md  pt-5 p-3">
-        <header>
-          <h2>Movie World</h2>
-        </header>
-        <section
-          className="container-sm mt-3 search"
-          style={{
-            minHeight: "80vh",
-            backgroundImage: `url(${movie.Poster})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-          }}
-        >
-          <Form
-            handleCenterForm={handleCenterForm}
-            focus={focus}
-            searchMovie={searchMovie}
-          />
-          {!focus && (
-            <Display
-              movie={movie}
-              searchDelete={searchDelete}
-              setMovieAction={setMovieAction}
+    <>
+      <div
+        className="wrapper d-flex flex-directin-coloum justify-content-center"
+        style={{
+          backgroundImage: `url(${movie.Poster})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        <div className="container-md  pt-5 p-3">
+          <header>
+            <h2>Movie World</h2>
+          </header>
+          <section
+            className="container-sm mt-3 search"
+            style={{
+              minHeight: "80vh",
+            }}
+          >
+            <Form
+              handleCenterForm={handleCenterForm}
+              focus={focus}
+              searchMovie={searchMovie}
             />
-          )}
-        </section>
-        <section
-          className="movie-list container-sm mt-3 pt-3 "
-          style={{ minHeight: "80vh" }}
-        >
-          <MovieList movieList={movieList} deleteMovie={deleteMovie} />
-        </section>
+            {!focus && (
+              <Display
+                movie={movie}
+                searchDelete={searchDelete}
+                setMovieAction={setMovieAction}
+              />
+            )}
+          </section>
+        </div>
       </div>
-    </div>
+      <div className="wrapper d-flex flex-directin-coloum justify-content-center">
+        <div className="container-md  pt-5 p-3">
+          <section
+            className="movie-list container-sm mt-3 pt-3 "
+            style={{ minHeight: "80vh" }}
+          >
+            <MovieList movieList={movieList} deleteMovie={deleteMovie} />
+          </section>
+        </div>
+      </div>
+    </>
   );
 }
 

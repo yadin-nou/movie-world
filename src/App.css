@@ -20,3 +20,8 @@ body {
 img {
   width: 100%;
 }
+h2 {
+  color: rgba(255, 0, 0, 0.44);
+  background: rgba(255, 0, 0, 0.028);
+  height: 10vh;
+}
