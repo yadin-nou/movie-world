@@ -38,7 +38,9 @@ function App() {
   };
 
   const deleteMovie = (imdbID) => {
-    setMovieList(movieList.filter((item) => item.imdbID !== imdbID));
+    const result = window.confirm("Are you sure want to delete?");
+    if (result)
+      setMovieList(movieList.filter((item) => item.imdbID !== imdbID));
     //console.log(action);
   };
 
