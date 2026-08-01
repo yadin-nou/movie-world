@@ -84,7 +84,7 @@ export const MovieList = ({ movieList, deleteMovie }) => {
 
                   <span className="pt-2">
                     <button
-                      className="btn btn-danger w-50"
+                      className="btn btn-danger w-50 btnDelete"
                       onClick={() => deleteMovie(movie.imdbID)}
                     >
                       Delete

@@ -20,9 +20,9 @@ export const Form = ({ handleCenterForm, focus, searchMovie }) => {
             <input
               type="text"
               name="movieName"
-              className="form-control "
+              className="inputSearch form-control"
               placeholder="Search Movie Name"
-              style={{ width: "calc(100vh - 550px)" }}
+              // style={{ width: "calc(100vh - 550px)" }}
               onFocus={handleCenterForm}
               ref={refSearch}
               required

@@ -39,3 +39,21 @@ h2 {
     transform: scale(1);
   }
 }
+
+.inputSearch {
+  width: calc(100vw - 78vw) !important;
+}
+
+@media (max-width: 890px) {
+  .inputSearch {
+    width: calc(100vw - 45vw) !important;
+  }
+}
+@media (max-width: 576px) {
+  .inputSearch {
+    width: calc(100vw - 190px) !important;
+  }
+  .btnDelete {
+    width: 100px !important;
+  }
+}
