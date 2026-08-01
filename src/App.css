@@ -22,6 +22,20 @@ img {
 }
 h2 {
   color: rgba(255, 0, 0, 0.44);
-  background: rgba(255, 0, 0, 0.028);
+
   height: 10vh;
+}
+.fade-in {
+  animation: fadeIn 2s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }

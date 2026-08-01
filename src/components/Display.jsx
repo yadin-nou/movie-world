@@ -7,10 +7,10 @@ export const Display = ({ movie, searchDelete, setMovieAction }) => {
   return (
     <>
       <div
-        className="card mb-3 mt-3 text-white"
+        className="fade-in card mb-3 mt-3 text-dark"
         style={{
           maxWidth: "640px",
-          backgroundColor: " rgba(255, 255, 255, 0.4)",
+          backgroundColor: " rgba(255, 255, 255, 0.6)",
         }}
       >
         {movie.Response === "False" && (

@@ -9,7 +9,7 @@ export const Form = ({ handleCenterForm, focus, searchMovie }) => {
   return (
     <>
       {focus && (
-        <div>
+        <div className="fade-in">
           <h4>Search Millions of Moives</h4>
           <p>Findout about the movies more details before watching them...</p>
         </div>

@@ -61,25 +61,25 @@ export const MovieList = ({ movieList, deleteMovie }) => {
             key={index}
             className="card mb-3 mt-4"
             style={{
-              maxWidth: "350px",
+              maxWidth: "550px",
               backgroundColor: " rgba(255, 255, 255, 0.4)",
             }}
           >
             <div className="row g-0">
-              <div className="col-4">
+              <div className="col-6">
                 <img
                   src={movie.Poster}
                   className="img-fluid rounded-start"
                   alt="..."
                 />
               </div>
-              <div className="col-8">
+              <div className="col-6">
                 <div className="card-body">
                   <h5 className="card-title fs-6">{movie.Title}</h5>
                   <p className="card-text" style={{ fontSize: "12px" }}>
                     IMBD Rating: {movie.imdbRating}
                     <br />
-                    {movie.Plot.slice(0, 50)} ....
+                    {movie.Plot.slice(0, 100)} ....
                   </p>
 
                   <span className="pt-2">
