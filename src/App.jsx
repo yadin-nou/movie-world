@@ -3,6 +3,8 @@ import "./App.css";
 import { Form } from "./components/Form";
 import { Display } from "./components/Display";
 import { MovieList } from "./components/MovieList";
+import { fetchMovie } from "./utils/axios";
+import { StringRandom } from "./utils/StringRandom";
 
 function App() {
   const [focus, setFocus] = useState(false);
@@ -12,21 +14,6 @@ function App() {
     setFocus(true);
   };
 
-  const fetchMovie = async (title) => {
-    try {
-      const url = `https://www.omdbapi.com/?t=${title}&apikey=2f439848`;
-      const response = await fetch(url);
-      const data = await response.json();
-      //setMovie(data);
-      if (data.Response === "false") {
-        //console.log(data.Error);
-        return null;
-      }
-      return data;
-    } catch (error) {
-      console.log(error);
-    }
-  };
   const searchDelete = () => {
     setFocus(true);
   };
@@ -49,29 +36,19 @@ function App() {
     // { ...movie, actions: type } — creates a new object that copies all of movie's existing properties (Title, Poster, imdbRating, etc.),
     //  then adds/overwrites an actions property set to type.
     // The whole thing wraps in [...] to build a new array, which gets set as the new movieList state.
-    setMovieList([...movieList, { ...movie, action: type }]);
+    const movieDuplicate = movieList.filter(
+      (item) => item.imdbID !== movie.imdbID,
+    );
+    setMovieList([...movieDuplicate, { ...movie, action: type }]);
     //setMovieList([...movieList, movie]);
     setFocus(true);
     //console.log(movieList);
   };
   useEffect(() => {
     const initailMovie = async () => {
-      const index = Math.floor(Math.random() * 12);
-      const seedTitles = [
-        "The Matrix",
-        "Inception",
-        "The Dark Knight",
-        "Parasite",
-        "Interstellar",
-        "Pulp Fiction",
-        "The Godfather",
-        "Fight Club",
-        "Spirited Away",
-        "The Shawshank Redemption",
-        "Titanic",
-        "Gladiator",
-      ];
-      const data = await fetchMovie(seedTitles[index]);
+      const str = StringRandom();
+      const data = await fetchMovie(str);
+      //console.log(data);
       setMovie(data);
     };
     initailMovie();
@@ -79,7 +56,7 @@ function App() {
   return (
     <>
       <div
-        className="wrapper d-flex flex-directin-coloum justify-content-center"
+        className="wrapper background-dark d-flex flex-directin-coloum justify-content-center position-relative background-dark"
         style={{
           backgroundImage: `url(${movie.Poster})`,
           backgroundSize: "cover",

@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 export const MovieList = ({ movieList, deleteMovie }) => {
   const [type, setType] = useState([]);
   const [activeFilter, setActiveFilter] = useState("all");
-
   const handleAction = (action) => {
     setActiveFilter(action);
   };
@@ -59,7 +58,7 @@ export const MovieList = ({ movieList, deleteMovie }) => {
         {type.map((movie, index) => (
           <div
             key={index}
-            className="card mb-3 mt-4"
+            className="card mb-3 mt-4 p-2"
             style={{
               maxWidth: "550px",
               backgroundColor: " rgba(255, 255, 255, 0.4)",
