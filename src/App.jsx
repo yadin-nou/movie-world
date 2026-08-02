@@ -5,6 +5,10 @@ import { Display } from "./components/Display";
 import { MovieList } from "./components/MovieList";
 import { fetchMovie } from "./utils/axios";
 import { StringRandom } from "./utils/StringRandom";
+import {
+  storeInLocalSession,
+  accessFormLocalSession,
+} from "./utils/sessionStorage";
 
 function App() {
   const [focus, setFocus] = useState(false);
@@ -26,8 +30,11 @@ function App() {
 
   const deleteMovie = (imdbID) => {
     const result = window.confirm("Are you sure want to delete?");
-    if (result)
-      setMovieList(movieList.filter((item) => item.imdbID !== imdbID));
+    if (result) {
+      const rm = movieList.filter((item) => item.imdbID !== imdbID);
+      setMovieList(rm);
+      storeInLocalSession(rm);
+    }
     //console.log(action);
   };
 
@@ -41,6 +48,7 @@ function App() {
     );
     setMovieList([...movieDuplicate, { ...movie, action: type }]);
     //setMovieList([...movieList, movie]);
+    storeInLocalSession([...movieDuplicate, { ...movie, action: type }]);
     setFocus(true);
     //console.log(movieList);
   };
@@ -50,6 +58,7 @@ function App() {
       const data = await fetchMovie(str);
       //console.log(data);
       setMovie(data);
+      setMovieList(accessFormLocalSession());
     };
     initailMovie();
   }, []);
